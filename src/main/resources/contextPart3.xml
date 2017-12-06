@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+ 		http://www.springframework.org/schema/util
+ 		http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="client" class="part3.models.Client">
+        <constructor-arg value="1"/>
+        <constructor-arg value="Кот Матроскин"/>
+    </bean>
+
+    <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance"/>
+
+    <bean id="event" class="part3.models.Event" scope="prototype" >
+        <constructor-arg>
+            <bean class="java.util.Date"/>
+        </constructor-arg>
+        <constructor-arg ref="dateFormat"/>
+        <property name="message" value="1: Усы, лапы и хвост — вот мои документы!"/>
+    </bean>
+
+    <bean id="event2" class="part3.models.Event" scope="prototype" >
+        <constructor-arg>
+            <bean class="java.util.Date"/>
+        </constructor-arg>
+        <constructor-arg ref="dateFormat"/>
+        <property name="message" value="1: Не правильно ты, дядя Федор, бутерброд ешь… Ты его колбасой кверху держишь, а надо колбасой на язык класть. Так вкуснее получится…"/>
+    </bean>
+
+    <bean id="eventLogger" class="part3.loggers.implemetation.ConsoleEventLogger"/>
+
+    <bean id="application" class="part3.Application">
+        <constructor-arg ref="client"/>
+        <constructor-arg ref="eventLogger"/>
+    </bean>
+
+
+</beans>
