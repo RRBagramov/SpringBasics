@@ -1,8 +1,8 @@
-package part4.loggers.implementation;
+package part6.loggers.implementation;
 
 import org.apache.commons.io.FileUtils;
-import part4.loggers.EventLogger;
-import part4.models.Event;
+import part6.loggers.EventLogger;
+import part6.models.Event;
 
 import javax.annotation.PostConstruct;
 import java.io.File;

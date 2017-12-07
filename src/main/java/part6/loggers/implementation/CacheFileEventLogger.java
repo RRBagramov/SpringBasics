@@ -1,9 +1,8 @@
-package part4.loggers.implementation;
+package part6.loggers.implementation;
 
-import part4.loggers.EventLogger;
-import part4.models.Event;
+import part6.loggers.EventLogger;
+import part6.models.Event;
 
-import javax.annotation.PreDestroy;
 import java.util.List;
 
 /**
@@ -11,6 +10,7 @@ import java.util.List;
  *
  * @author Robert Bagramov.
  */
+
 public class CacheFileEventLogger extends FileEventLogger implements EventLogger {
     private int cacheSize;
     private List<Event> cache;
@@ -35,7 +35,6 @@ public class CacheFileEventLogger extends FileEventLogger implements EventLogger
         }
     }
 
-    @PreDestroy
     public void destroy() {
         if (!cache.isEmpty()) {
             writeEventsFromCache();
